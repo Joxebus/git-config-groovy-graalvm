@@ -125,3 +125,11 @@ Repo:  git@github.com:Joxebus/git-config-groovy-graalvm.git
 Name:  Omar Bautista
 Email: joxebus@gmail.com
 ```
+
+### Benchmark 
+
+I've tested this tool running directly with Groovy, then compiling and testing running as Java 
+including into the classpath the Groovy jars, finally I compiled to native-image and this is the
+results:
+
+![git-config-benchmark](https://github.com/Joxebus/git-config-groovy-graalvm/blob/main/img/groovy-java-graalvm-benchmark.jpeg?raw=true)
