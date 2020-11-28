@@ -86,3 +86,42 @@ After finish do not forget to include the file generated to your configuration `
 
 Thanks to @wololock is published on his gist here:  https://gist.github.com/wololock/ac83a8196a8252fbbaacf4ac84e10b36
 
+### Usage
+
+You can see the options by running the command `-h` or `--help`
+
+```shell script
+./git-config -h
+
+usage: git-config -[hvroi]
+ -c,--configure     Configure user info
+ -h,--help          Usage Information
+ -p,--profile       Use profile configuration
+ -s,--show          Show user info
+ -sl,--show-local   Show local configuration
+
+```
+
+This tool has been written to change between git profiles that will be stored on json format on your
+`${USER_HOME}/git-config/config.json` first you need to configure the tool by running the command
+
+```shell script
+./git-config -c
+```
+
+Follow the steps and then you are ready to change between your profiles using the next command:
+
+```shell script
+./git-config -p <name-of-your-profile>
+```
+
+You can see the configuration of your current directory by running the option `-sl` or `--show-local`
+also you can see your current directory with the option `-s` or `--show`:
+
+```shell script
+./git-config -sl
+
+Repo:  git@github.com:Joxebus/git-config-groovy-graalvm.git
+Name:  Omar Bautista
+Email: joxebus@gmail.com
+```
