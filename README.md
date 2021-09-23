@@ -27,15 +27,17 @@ withConfig(configuration) {
 Now in order to use this configuration at compile time we need to run the following command
 
 ```shell script
-groovyc --configscript compiler.groovy git-config.groovy
+groovyc --configscript compiler.groovy git-config.groovy -d output
 ```
 
 ## Run with Java
 
-You can run your script with Java by including in the classpath the Groovy jar file
+You can run your script with Java by navigating into the output directory and including in the classpath the Groovy jar file
 
 ```shell script
-java -cp ".:$GROOVY_HOME/lib/groovy-3.0.6.jar:$GROOVY_HOME/lib/groovy-json-3.0.6.jar" git-config --help
+> cd output
+
+> java -cp ".:$GROOVY_HOME/lib/groovy-3.0.6.jar:$GROOVY_HOME/lib/groovy-json-3.0.6.jar" git-config --help
 ```
 
 ## Build native-image
@@ -85,6 +87,14 @@ groovy dgm-reflections-generator.groovy
 After finish do not forget to include the file generated to your configuration `-H:ReflectionConfigurationFiles`.
 
 Thanks to @wololock is published on his gist here:  https://gist.github.com/wololock/ac83a8196a8252fbbaacf4ac84e10b36
+
+### custom reflections when the script is modified is modified
+If you add a new closure or class and want to include it when compiling to GraalVM first execute this script
+that way you will have all the `conf/custom-reflections.json` updated, those are required to compile to native image.
+
+```groovy
+groovy custom-reflections-generator.groovy
+```
 
 ### Usage
 
